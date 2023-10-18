@@ -1,0 +1,1 @@
+- refer https://flask-jwt-extended.readthedocs.io/en/stable/basic_usage.html
