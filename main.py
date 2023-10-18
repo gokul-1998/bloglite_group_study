@@ -8,7 +8,7 @@ from flask_cors import CORS
 from backend.application import workers
 from backend.application import task
 from backend.application.cache import cache
-
+print(Config.CACHE_REDIS_HOST)
 def create_app():
     app = Flask(__name__,template_folder='frontend',static_folder='frontend/static')
     app.config.from_object(Config) 

@@ -1,4 +1,9 @@
 import secrets
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+
 class Config:
     SQLALCHEMY_DATABASE_URI = "sqlite:///project.db"
     SECRET_KEY = '4FJwO_fyFymIe26DjpIQ0IWwVl_BoKtGIyGexUPFo0s'
@@ -34,10 +39,11 @@ class Config:
     SECURITY_API_ENABLED_METHODS=['token']
     SECURITY_USERNAME_ENABLE=True
     SECURITY_USERNAME_REQUIRED=True
-    CELERY_BROKER_URL="redis://default:vmy16jAbvbHXlBph9PqGn9pwsXK6P7NE@redis-17198.c301.ap-south-1-1.ec2.cloud.redislabs.com:17198/0"
-    CELERY_RESULT_BACKEND = "redis://default:vmy16jAbvbHXlBph9PqGn9pwsXK6P7NE@redis-17198.c301.ap-south-1-1.ec2.cloud.redislabs.com:17198/1"
+    CELERY_BROKER_URL=os.environ.get('CELERY_BROKER_URL')
+    CELERY_RESULT_BACKEND=os.environ.get('CELERY_RESULT_BACKEND')
     CELERY_IMPORTS = ('backend.applicaiton.task')
     CACHE_TYPE = 'RedisCache'
     CACHE_DEFAULT_TIMEOUT=300
-    CACHE_REDIS_HOST='redis-17198.c301.ap-south-1-1.ec2.cloud.redislabs.com'
+    CACHE_REDIS_HOST=os.environ.get('CACHE_REDIS_HOST')
+   
     CACHE_REDIS_PORT=17198
