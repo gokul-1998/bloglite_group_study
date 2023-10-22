@@ -37,13 +37,18 @@ class Config:
     # if we set it to false, then we can't protect our forms from csrf attacks
     
     SECURITY_API_ENABLED_METHODS=['token']
+    # security api enabled methods is used to enable api authentication, 
+    # if we set it to false, then we can't authenticate api requests
+
     SECURITY_USERNAME_ENABLE=True
+    # security username enable is used to enable username field in the registration form,
     SECURITY_USERNAME_REQUIRED=True
     CELERY_BROKER_URL=os.environ.get('CELERY_BROKER_URL')
     CELERY_RESULT_BACKEND=os.environ.get('CELERY_RESULT_BACKEND')
     CELERY_IMPORTS = ('backend.applicaiton.task')
+    
     CACHE_TYPE = 'RedisCache'
     CACHE_DEFAULT_TIMEOUT=300
     CACHE_REDIS_HOST=os.environ.get('CACHE_REDIS_HOST')
-   
+    CACHE_REDIS_PASSWORD=os.environ.get('CACHE_REDIS_PASSWORD')
     CACHE_REDIS_PORT=17198
